@@ -1,0 +1,154 @@
+﻿@model LayerNetwork.Model.AdminModel.EmployeeModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+</head>
+
+<div class="content-wrapper">
+    <h1>Create Category</h1>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form id="myform" enctype="multipart/form-data">
+                @*<form asp-action="Create" method="post" enctype="multipart/form-data">*@
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h4>Create Employee</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mt-1">
+                            <label asp-for="Name"></label>@*<span asp-validation-for="Name" class="text-danger"></span>*@
+                            <input asp-for="Name" id="Name" type="text" class="form-control" />
+                            <div id="name_error"></div>
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="Age"></label>@*<span asp-validation-for="Age" class="text-danger"></span>*@
+                            <input asp-for="Age" id="Age" onkeyup="AgeEnter()" name="Age" class="form-control" />
+                            <div id="Age_error"></div>
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="Email"></label>@*<span asp-validation-for="Email" class="text-danger"></span>*@
+                            <input asp-for="Email" id="Email" name="Email" class="form-control" />
+                            <div id="email_error"></div>
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="Password"></label>@*<span asp-validation-for="Password" class="text-danger"></span>*@
+                            <input type="password" asp-for="Password" id="Password" name="Password" class="form-control" />
+                            <div id="pass_error"></div>
+                        </div>
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Gender"></label>@*<span asp-validation-for="Gender" class="text-danger"></span>*@
+                            <select asp-for="Gender" id="Gender" name="Gender" class="form-control">
+                                <option value="">--Select--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Transgender">Trangender</option>
+                            </select>
+                            <div id="gender_error"></div>
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="PhoneNumber"></label>@*<span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
+                            <input asp-for="PhoneNumber" id="PhoneNumber" name="PhoneNumber" class="form-control" />
+                            <div id="phone_error"></div>
+                        </div>
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Address"></label>@*<span asp-validation-for="Address" class="text-danger"></span>*@
+                            <input asp-for="Address" id="Address" name="Address" class="form-control" />
+                            <div id="address_error"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button id="sumbit" class="btn btn-success btn-block" onclick="Add();" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        @*<script src="jquery.are-you-sure.js"></script>*@
+        <script src="~/lib/jquery/jquery-3.2.1.min.js"></script>
+        <script src="~/lib/jquery/jquery-1.12.4.min.js"></script>
+        <script src="~/js/jquery.dataTables.min.js"></script>>
+
+        <script>
+            $(document).ready(function () {
+                $('#myform').DataTable();
+            });
+            //function AgeEnter() {
+            //    Age = $("#Age").val();
+            //    if (Age == "") {
+            //        $('#Age_error').html('** Age must be filled.');
+            //        $('#Age_error').css('color', 'red');
+            //    }
+            //    else {
+            //        // $('#Age').removeProp(Age_error);
+            //        $('#Age').prop('required', false);
+            //    }
+            }
+            function Add() {
+                /*debugger;*/
+                ID = $('#ID').val();
+
+                Name = $("#Name").val();
+                if (Name == "") {
+                    $('#name_error').html('** Name must be filled.');
+                    $('#name_error').css('color', 'red');
+                }
+                Age = $("#Age").val();
+                if (Age == "") {
+                    $('#Age_error').html('** Age must be filled.');
+                    $('#Age_error').css('color', 'red');
+                }
+                Email = $("#Email").val();
+                if (Email == "") {
+                    $('#email_error').html('** Email must be filled.');
+                    $('#email_error').css('color', 'red');
+                }
+                Password = $("#Password").val();
+                if (Password == "") {
+                    $('#pass_error').html('** Password must be filled.');
+                    $('#pass_error').css('color', 'red');
+                }
+                Gender = $("#Gender").val();
+                if (Gender == "") {
+                    $('#gender_error').html('** Gender must be filled.');
+                    $('#gender_error').css('color', 'red');
+                }
+                PhoneNumber = $("#PhoneNumber").val();
+                if (PhoneNumber == "") {
+                    $('#phone_error').html('** PhoneNumber must be filled.');
+                    $('#phone_error').css('color', 'red');
+                }
+                Address = $("#Address").val();
+                if (Address == "") {
+                    $('#Address_error').html('** Address must be filled.');
+                    $('#Address_error').css('color', 'red');
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Add_data/",
+                    data: {
+                        "ID": ID,
+                        "Name": Name,
+                        "Age": Age,
+                        "Email": Email,
+                        "Password": Password,
+                        "Gender": Gender,
+                        "PhoneNumber": PhoneNumber,
+                        "Address": Address
+                    },
+                    success: function (response) {
+                    }
+                });
+            }
+        </script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </div>
+</div>

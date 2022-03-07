@@ -1,0 +1,144 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="hidden" id="hidden" />
+        <div>
+            <label> Enter Your Name</label>
+            <input type="text" placeholder="Enter Your Name" id="name">
+        </div>
+        <div>
+            <label> Enter Your Name</label>
+            <input type="text" placeholder="Enter Your Name" id="id">
+        </div>
+        <div>
+            <label> Enter Your Name</label>
+            <input type="text" placeholder="Enter Your Name" id="salary">
+        </div>
+        <div>
+            <label> Enter Your Name</label>
+            <input type="text" placeholder="Enter Your Name" id="address">
+        </div>
+        <div>
+            <button type="submit" id="search"> SUbmit</button>
+        </div>
+    </div>
+    <div>
+        <table id="tbl">
+        </table>
+    </div>
+
+    <script>
+        var Data = [
+            ["kamal pratap singh", 123, 30000, "aligarh"],
+            ["Shivam pratap singh", 23, 440000, "hathras"],
+            ["Sakshi Katiyar", 13, 30700, "oriya"],
+            ["praveen sharma", 123, 30000, "aligarh"],
+        ]
+
+        function user(x) {
+            var row = `<tr>
+                <th>S nO</th>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Salary</th>
+                <th>Address</th>
+                <td>Action</td>
+                </tr>`;
+            x.forEach(function (y, i) {
+                row += `<tr>
+                    <th>${i + 1}</th>
+                    <th>${y[0]}</th>
+                    <th>${y[1]}</th>
+                    <th>${y[2]}</th>
+                    <th>${y[3]}</th>
+                    <td><a href="#" onclick=edit(${i}) ><i class=' fa fa-edit'></i></a>
+                    <a href="#" onclick=del(${i})><i class='fa fa-trash'></i></a></td>
+                    </tr>`;
+            })
+            document.getElementById("tbl").innerHTML = row
+
+        }
+
+
+
+        // Add data in tbl
+        function adddata() {
+            let name = document.getElementById("name").value;
+            let id = document.getElementById("id").value;
+            let salary = document.getElementById("salary").value;
+            let address = document.getElementById("address").value;
+            let index=document.getElementById("hidden").value; //edit data code
+            //console.log(index);
+            var data = [name, id, salary, address]; // add data code
+            // console.log(data)
+            if(index=="" || index=="undefined"){
+            Data.push(data);  //add data code
+            }
+            else{
+                Data.splice(index,1,data);
+                document.getElementById("search").innerHTML="Submit";
+            }
+            user(Data);   //add  data code
+             clearform();
+
+        }
+        document.getElementById("search").addEventListener('click', adddata);
+        user(Data)
+
+        // clearform
+        function clearform() {
+            document.getElementById("name").value = "";
+            document.getElementById("id").value = "";
+            document.getElementById("salary").value = "";
+            document.getElementById("address").value = "";
+        }
+
+        //delete data in the tbl
+        function del(i) {
+            // console.log(i)
+            Data.splice(i, 1);
+            user(Data);
+        }
+
+        //edit data in tbl
+        function edit(i) {
+            // console.log(i)
+            var data=Data[i];
+
+            document.getElementById("name").value =data[0];
+            document.getElementById("id").value = data[1];
+            document.getElementById("salary").value =data[2];
+            document.getElementById("address").value =data[3];
+            document.getElementById("hidden").value=i;
+            document.getElementById("search").innerHTML="UpDate Data";
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

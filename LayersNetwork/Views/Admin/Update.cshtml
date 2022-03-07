@@ -1,0 +1,75 @@
+﻿@model Layers.DAL.EntityDbContext.Employee
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h1>Update Employee</h1>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form asp-action="Update" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h4>Update Employee</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mt-1">
+                                <label asp-for="Name"></label>
+                                <input asp-for="Name"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label asp-for="Age"></label>
+                                <input asp-for="Age"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group mt-1">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label asp-for="Password"></label>
+                                <input asp-for="Password"
+                                       class="form-control" />
+                            </div>
+
+
+                            <div class="form-group mt-1">
+                                <label asp-for="Gender"></label>
+                                <select asp-for="Gender"
+                                        class="form-control">
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                    <option value="false">Transgender</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label asp-for="PhoneNumber"></label>
+                                <input asp-for="PhoneNumber"
+                                       class="form-control" />
+                            </div>
+                            <div class="form-group mt-1">
+                                <label asp-for="Address"></label>
+                                <input asp-for="Address"
+                                       class="form-control" />
+                            </div>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success btn-block" type="submit">Update</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

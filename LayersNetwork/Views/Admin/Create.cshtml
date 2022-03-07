@@ -1,0 +1,153 @@
+﻿@model Layers.DAL.EntityDbContext.Employee
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+</head>
+
+<div class="content-wrapper">
+    <h1>Create Category</h1>
+    <div class="row">
+        <div class="col-6 offset-3">
+            @*<form id="myform" enctype="multipart/form-data">*@
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h4>Create Employee</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mt-1">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" id="Name" type="text" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+
+                        </div>
+
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Age"></label>
+                            <input asp-for="Age" type="text" id="Age" class="form-control" />
+                            @*<span asp-validation-for="Age" class="text-danger"></span>*@
+                        </div>
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" id="Email" name="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+
+                        </div>
+                        
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Password"></label>
+                            <input type="password" asp-for="Password" id="Password" name="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Gender"></label>
+                            <select asp-for="Gender" id="Gender" class="form-control">
+                                <option value="">--Select--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Transgender">Trangender</option>
+                            </select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="PhoneNumber"></label>
+                            <input asp-for="PhoneNumber" id="PhoneNumber" name="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Address"></label>
+                            <input asp-for="Address" id="Address" name="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                   <button id="sumbit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" type="submit">Submit</button>
+
+
+                    <!-- Button trigger modal -->
+                    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        submit
+                    </button>-->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </form>
+
+        </div>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+
+            $(document).ready(function () {
+                var Data = $("myform").serialize();
+                var Data = {                    //Passing data
+                    'Name': $("#Name").val(),       //Reading text box values using Jquery
+                    'Age': $("#Age").val(),
+                    'Email': $("#Email").val(),
+                    'Gender': $("#Gender").val(),
+                    'PhoneNumber': $("#PhoneNumber").val(),
+                    'Address': $("#Address").val()
+                }
+
+                $("#sumbit").click(function () {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "~/Admin/Create/",
+                        dataType:'json',
+                        data: Data,
+                        success: function (response) {
+                            alert("Data Saved");
+
+                        }
+                    })
+                })
+            });
+
+        </script>*@
+    </div>
+</div>
+

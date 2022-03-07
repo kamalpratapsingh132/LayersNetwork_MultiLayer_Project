@@ -1,0 +1,117 @@
+﻿@model Layers.DAL.EntityDbContext.Employee
+@{
+    ViewData["Title"] = "GetData_with_jquery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h1>Create Category</h1>
+    <div class="row">
+        <div class="col-6 offset-3">
+            @*<div class="fcc-btn" style="margin-left:350px">
+                    <a asp-action="About_us" asp-route-ID="#" class="gfg" onclick="return confirm('Are you sure you wish to Save this Data?');">  About us </a>
+                </div>*@
+            <form id=" myform">
+                @*<form asp-action="Create" method="post" enctype="multipart/form-data">*@
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h4>Create Category</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mt-1">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" id="Name" name="Name"
+                                   class="form-control" />
+                        </div>
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Age"></label>
+                            <input asp-for="Age" id="Age" name="Age"
+                                   class="form-control" />
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" id="Email" name="Email"
+                                   class="form-control" />
+                        </div>
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" id="Password" name="Password"
+                                   class="form-control" />
+                        </div>
+
+
+                        <div class="form-group mt-1">
+                            <label asp-for="Gender"></label>
+                            <select asp-for="Gender" id="Gender" name="Gender"
+                                    class="form-control">
+                                <option value="true">Male</option>
+                                <option value="false">Female</option>
+                                <option value="false">Trangender</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mt-1">
+                            <label asp-for="PhoneNumber"></label>
+                            <input asp-for="PhoneNumber" id="PhoneNumber" name="PhoneNumber"
+                                   class="form-control" />
+                        </div>
+                        <div class="form-group mt-1">
+                            <label asp-for="Address"></label>
+                            <input asp-for="Address" id="Address" name="Address"
+                                   class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button id="sumbit" class="btn btn-success btn-block" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div>
+            <table id="tbl">
+            </table>
+        </div>
+
+        <script>
+            var Data = [
+                ["kamal pratap singh", 22, 'kamal@gmail.com', 'Male', '1234567890', "aligarh"],
+                ["Shivam pratap singh", 23, 'shivam@gmail.com', 'Male', '`1234567890', "hathras"],
+            ]
+
+            function user(x) {
+                var row = `<tr>
+                                <th>S nO</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Mobile No.</th>
+                                <th>Address</th>
+                                <td>Action</td>
+                                </tr>`;
+                x.forEach(function (y, i) {
+                    row += `<tr>
+                                    <th>${i + 1}</th>
+                                    <th>${y[0]}</th>
+                                    <th>${y[1]}</th>
+                                    <th>${y[2]}</th>
+                                    <th>${y[3]}</th>
+                                    <td><a href="#" onclick=edit(${i}) ><i class=' fa fa-edit'></i></a>
+                                    <a href="#" onclick=del(${i})><i class='fa fa-trash'></i></a></td>
+                                    </tr>`;
+                })
+                document.getElementById("tbl").innerHTML = row
+
+            }
+
+
+
+        </script>
+    </div>
+</div>
